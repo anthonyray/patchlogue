@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wxHexEditor_XML_TAG>
+  <filename path="/Users/antho/Projects/misc/patchlogue/tags.tags">
+    <TAG id="0">
+      <start_offset>0</start_offset>
+      <end_offset>4</end_offset>
+      <tag_text></tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#924D4D</note_colour>
+    </TAG>
+    <TAG id="1">
+      <start_offset>0</start_offset>
+      <end_offset>4</end_offset>
+      <tag_text>PROG</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#924D4D</note_colour>
+    </TAG>
+    <TAG id="2">
+      <start_offset>5</start_offset>
+      <end_offset>15</end_offset>
+      <tag_text>Program name</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#3EE380</note_colour>
+    </TAG>
+    <TAG id="3">
+      <start_offset>16</start_offset>
+      <end_offset>16</end_offset>
+      <tag_text>octave</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#937A26</note_colour>
+    </TAG>
+    <TAG id="4">
+      <start_offset>17</start_offset>
+      <end_offset>17</end_offset>
+      <tag_text>sub on </tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#6C2693</note_colour>
+    </TAG>
+    <TAG id="5">
+      <start_offset>18</start_offset>
+      <end_offset>18</end_offset>
+      <tag_text>edit timbre</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#FB000B</note_colour>
+    </TAG>
+    <TAG id="6">
+      <start_offset>19</start_offset>
+      <end_offset>19</end_offset>
+      <tag_text>trimbre type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#D500FE</note_colour>
+    </TAG>
+    <TAG id="7">
+      <start_offset>20</start_offset>
+      <end_offset>20</end_offset>
+      <tag_text>balance</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#37EEFE</note_colour>
+    </TAG>
+    <TAG id="8">
+      <start_offset>21</start_offset>
+      <end_offset>21</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#70FF08</note_colour>
+    </TAG>
+    <TAG id="9">
+      <start_offset>22</start_offset>
+      <end_offset>22</end_offset>
+      <tag_text>main sub position</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#D26CF8</note_colour>
+    </TAG>
+    <TAG id="10">
+      <start_offset>23</start_offset>
+      <end_offset>23</end_offset>
+      <tag_text>split point</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#F5412F</note_colour>
+    </TAG>
+    <TAG id="11">
+      <start_offset>24</start_offset>
+      <end_offset>25</end_offset>
+      <tag_text>tempo</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#AE13C6</note_colour>
+    </TAG>
+    <TAG id="12">
+      <start_offset>26</start_offset>
+      <end_offset>26</end_offset>
+      <tag_text>arp target</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#C5752A</note_colour>
+    </TAG>
+    <TAG id="13">
+      <start_offset>27</start_offset>
+      <end_offset>28</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#32CC12</note_colour>
+    </TAG>
+    <TAG id="14">
+      <start_offset>29</start_offset>
+      <end_offset>29</end_offset>
+      <tag_text>category</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#4640C6</note_colour>
+    </TAG>
+    <TAG id="15">
+      <start_offset>30</start_offset>
+      <end_offset>33</end_offset>
+      <tag_text>frequent upper frequent lower </tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#C3009E</note_colour>
+    </TAG>
+    <TAG id="16">
+      <start_offset>34</start_offset>
+      <end_offset>36</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#56CB1B</note_colour>
+    </TAG>
+    <TAG id="17">
+      <start_offset>37</start_offset>
+      <end_offset>37</end_offset>
+      <tag_text>amp velocity</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#33BBE8</note_colour>
+    </TAG>
+    <TAG id="18">
+      <start_offset>38</start_offset>
+      <end_offset>38</end_offset>
+      <tag_text>portamento mode</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E5351B</note_colour>
+    </TAG>
+    <TAG id="19">
+      <start_offset>39</start_offset>
+      <end_offset>39</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#20EF18</note_colour>
+    </TAG>
+    <TAG id="20">
+      <start_offset>40</start_offset>
+      <end_offset>40</end_offset>
+      <tag_text>program level</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#40DAE8</note_colour>
+    </TAG>
+    <TAG id="21">
+      <start_offset>41</start_offset>
+      <end_offset>41</end_offset>
+      <tag_text>mod effect type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#697CE8</note_colour>
+    </TAG>
+    <TAG id="22">
+      <start_offset>42</start_offset>
+      <end_offset>43</end_offset>
+      <tag_text>mod effect speed</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E500D2</note_colour>
+    </TAG>
+    <TAG id="23">
+      <start_offset>44</start_offset>
+      <end_offset>45</end_offset>
+      <tag_text>mod effect depth</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E66E6B</note_colour>
+    </TAG>
+    <TAG id="24">
+      <start_offset>46</start_offset>
+      <end_offset>46</end_offset>
+      <tag_text>mod effect chorus</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#736AE8</note_colour>
+    </TAG>
+    <TAG id="25">
+      <start_offset>47</start_offset>
+      <end_offset>47</end_offset>
+      <tag_text>mod effect ensemble</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#C648E8</note_colour>
+    </TAG>
+    <TAG id="26">
+      <start_offset>48</start_offset>
+      <end_offset>48</end_offset>
+      <tag_text>mod effect phaser</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E52512</note_colour>
+    </TAG>
+    <TAG id="27">
+      <start_offset>49</start_offset>
+      <end_offset>49</end_offset>
+      <tag_text>mod effect flanger</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E55A93</note_colour>
+    </TAG>
+    <TAG id="28">
+      <start_offset>50</start_offset>
+      <end_offset>50</end_offset>
+      <tag_text>mod effect user</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#37E6E7</note_colour>
+    </TAG>
+    <TAG id="29">
+      <start_offset>51</start_offset>
+      <end_offset>51</end_offset>
+      <tag_text>micro tuning</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E8E50C</note_colour>
+    </TAG>
+    <TAG id="30">
+      <start_offset>52</start_offset>
+      <end_offset>52</end_offset>
+      <tag_text>scale key</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E7D647</note_colour>
+    </TAG>
+    <TAG id="31">
+      <start_offset>53</start_offset>
+      <end_offset>53</end_offset>
+      <tag_text>program tuning</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E7D647</note_colour>
+    </TAG>
+    <TAG id="32">
+      <start_offset>54</start_offset>
+      <end_offset>54</end_offset>
+      <tag_text>program transpose</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E7D647</note_colour>
+    </TAG>
+    <TAG id="33">
+      <start_offset>55</start_offset>
+      <end_offset>55</end_offset>
+      <tag_text>arp gate time</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#17B7E7</note_colour>
+    </TAG>
+    <TAG id="34">
+      <start_offset>56</start_offset>
+      <end_offset>56</end_offset>
+      <tag_text>arp rate</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#17B7E7</note_colour>
+    </TAG>
+    <TAG id="35">
+      <start_offset>57</start_offset>
+      <end_offset>58</end_offset>
+      <tag_text>delay reverb dry wet</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#0000E7</note_colour>
+    </TAG>
+    <TAG id="36">
+      <start_offset>59</start_offset>
+      <end_offset>61</end_offset>
+      <tag_text>reserved </tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#20EE09</note_colour>
+    </TAG>
+    <TAG id="37">
+      <start_offset>62</start_offset>
+      <end_offset>62</end_offset>
+      <tag_text>delay reverb type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#7B7EE7</note_colour>
+    </TAG>
+    <TAG id="38">
+      <start_offset>63</start_offset>
+      <end_offset>64</end_offset>
+      <tag_text>delay reverb time</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#7B7EE7</note_colour>
+    </TAG>
+    <TAG id="39">
+      <start_offset>65</start_offset>
+      <end_offset>66</end_offset>
+      <tag_text>delay reverb depth</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#7B7EE7</note_colour>
+    </TAG>
+    <TAG id="40">
+      <start_offset>67</start_offset>
+      <end_offset>67</end_offset>
+      <tag_text>reverb type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#7B7EE7</note_colour>
+    </TAG>
+    <TAG id="41">
+      <start_offset>68</start_offset>
+      <end_offset>68</end_offset>
+      <tag_text>delay type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#7B7EE7</note_colour>
+    </TAG>
+    <TAG id="42">
+      <start_offset>69</start_offset>
+      <end_offset>69</end_offset>
+      <tag_text>mod effect routing</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#22EBBC</note_colour>
+    </TAG>
+    <TAG id="43">
+      <start_offset>70</start_offset>
+      <end_offset>70</end_offset>
+      <tag_text>delay effect routing</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#22EBBC</note_colour>
+    </TAG>
+    <TAG id="44">
+      <start_offset>71</start_offset>
+      <end_offset>71</end_offset>
+      <tag_text>mod effect onoff</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#22EBBC</note_colour>
+    </TAG>
+    <TAG id="45">
+      <start_offset>72</start_offset>
+      <end_offset>72</end_offset>
+      <tag_text>delay reverb onoff</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#22EBBC</note_colour>
+    </TAG>
+    <TAG id="46">
+      <start_offset>73</start_offset>
+      <end_offset>73</end_offset>
+      <tag_text>arpeggiator </tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#1B54E7</note_colour>
+    </TAG>
+    <TAG id="47">
+      <start_offset>74</start_offset>
+      <end_offset>74</end_offset>
+      <tag_text>arpeggiator range</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#1B54E7</note_colour>
+    </TAG>
+    <TAG id="48">
+      <start_offset>75</start_offset>
+      <end_offset>75</end_offset>
+      <tag_text>arpeggiator type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#1B54E7</note_colour>
+    </TAG>
+    <TAG id="49">
+      <start_offset>79</start_offset>
+      <end_offset>76</end_offset>
+      <tag_text>like upper like lower</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#9AE9DF</note_colour>
+    </TAG>
+    <TAG id="50">
+      <start_offset>80</start_offset>
+      <end_offset>80</end_offset>
+      <tag_text>portamento time</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#E5503F</note_colour>
+    </TAG>
+    <TAG id="51">
+      <start_offset>81</start_offset>
+      <end_offset>81</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#1FEE28</note_colour>
+    </TAG>
+    <TAG id="52">
+      <start_offset>82</start_offset>
+      <end_offset>82</end_offset>
+      <tag_text>voice spread</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#2DEBD0</note_colour>
+    </TAG>
+    <TAG id="53">
+      <start_offset>83</start_offset>
+      <end_offset>83</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#22EF05</note_colour>
+    </TAG>
+    <TAG id="54">
+      <start_offset>84</start_offset>
+      <end_offset>85</end_offset>
+      <tag_text>voice mode depth</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#6BEBCE</note_colour>
+    </TAG>
+    <TAG id="55">
+      <start_offset>86</start_offset>
+      <end_offset>86</end_offset>
+      <tag_text>voice mode type</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#6BEBCE</note_colour>
+    </TAG>
+    <TAG id="56">
+      <start_offset>87</start_offset>
+      <end_offset>89</end_offset>
+      <tag_text>reserved</tag_text>
+      <font_colour>#000000</font_colour>
+      <note_colour>#1FEF36</note_colour>
+    </TAG>
+  </filename>
+</wxHexEditor_XML_TAG>
