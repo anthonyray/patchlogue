@@ -1,9 +1,10 @@
+#[rustfmt::skip]
 mod timbre_parameters;
 
 use binrw::BinRead;
 use serde::Serialize;
-use timbre_parameters::TimbreParameters;
 use std::str;
+use timbre_parameters::TimbreParameters;
 
 #[derive(Debug, PartialEq, BinRead, Serialize)]
 #[br(little)]
@@ -72,12 +73,11 @@ pub struct Program {
 #[derive(Debug, PartialEq, Serialize, BinRead)]
 pub enum DelayReverbType {
     #[br(magic(0u8))]
-    Off, 
+    Off,
     #[br(magic(1u8))]
-    Delay, 
+    Delay,
     #[br(magic(2u8))]
-    Reverb, 
-
+    Reverb,
 }
 
 #[derive(Debug, PartialEq, Serialize, BinRead)]
@@ -343,8 +343,6 @@ pub enum ModEffectType {
     #[br(magic(4u8))]
     User,
 }
-
-
 
 #[derive(Debug, PartialEq, BinRead, Serialize)]
 pub enum VoiceModeType {
