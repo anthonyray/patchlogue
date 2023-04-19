@@ -5,7 +5,7 @@
 # Usage
 1. Head over to [pathlogue.com](https://www.patchlogue.com)
 2. Plug your synthesizer in using USB
-3. Select "PROLOGUE KBD/KNB" as your MIDI input and "PROLOGUE SND" as MIDI output
+3. Select `PROLOGUE KBD/KNB` as your MIDI input and `PROLOGUE SND` as MIDI output
 4. Click on the "retrieve patch" button to visualize your current patch
 
 Supported browsers :
