@@ -3,6 +3,8 @@ name = "patchlogue"
 version = "0.1.0"
 authors = ["Anthony Reinette"]
 edition = "2018"
+description = "A tool to visualize patches from KORG logue synthesizers"
+repository = "https://github.com/anthonyray/patchlogue"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
