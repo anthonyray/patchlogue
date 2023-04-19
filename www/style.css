@@ -1,0 +1,323 @@
+:root {
+  --main-background-color: rgb(255, 248, 233);
+  --main-background-color-lighter-10: #fff9eb;
+  --main-background-color-lighter-20: #fff9ed;
+  --main-background-color-lighter-30: #fffaf0;
+  --main-background-color-darker: #e6dfd2;
+  --main-background-color-darker-80: #33322f;
+
+  --main-text-color: #77604d;
+  --main-text-color-darker: #18130f;
+  --main-text-color-lighter-30: #a09082;
+  --main-text-color-lighter-40: #ada094;
+  --main-text-color-lighter-50: #bbb0a6;
+  --main-text-color-lighter-60: #c9bfb8;
+
+  --main-accent-color: #e26d5c;
+  --main-green: rgb(0, 173, 118);
+  --main-green-lighter: rgb(236, 247, 229);
+}
+
+body {
+  background-color: var(--main-background-color);
+  font-family: sans-serif;
+  color: var(--main-text-color);
+}
+
+header {
+  text-align: center;
+  font-family: monospace;
+  border-bottom: var(--main-background-color-darker) solid 1px;
+  padding: 0.8rem;
+}
+
+.menu {
+  display: flex;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 25px;
+}
+
+.menu_section {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu_button {
+  border: solid var(--main-background-color-darker) 1px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu_button_disabled {
+  cursor: not-allowed;
+  color: var(--main-background-color-darker);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.connection_status {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+}
+
+.connection_status__disconnected {
+  background-color: var(--main-accent-color);
+}
+
+.connection_status__connected {
+  background-color: var(--main-green);
+}
+
+.connection_status__notselected {
+  background-color: var(--main-background-color-darker);
+}
+
+.connected {
+  background-color: var(--main-green);
+}
+
+.dropdown_status {
+  background-color: var(--main-green);
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+}
+
+.dropdown_trigger {
+  cursor: pointer;
+}
+
+.dropdown_display {
+  display: flex;
+  gap: 5px;
+}
+
+
+.dropdown_content {
+  /* Hide the dropdown's content by default */
+  display: none;
+  /* Position it right below the trigger element */
+  left: 0;
+  padding-top: 0.25rem;
+  position: absolute;
+  top: 100%;
+  background-color: var(--main-background-color);
+  z-index: 9999;
+}
+
+/* Show the content when hover on the container */
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+
+/* -------- The Panel ---- */
+
+.panel {
+  display: flex;
+}
+
+.panel-section {
+  flex: 1;
+}
+
+.panel-row {
+  display: flex;
+  font-weight: lighter;
+}
+
+.panel-cell-fill {
+  flex: 1;
+}
+
+.panel-title {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 5px 0px;
+}
+
+.panel-section {
+  border-right: 1px solid var(--main-background-color-darker);
+}
+
+.panel-unavailable {
+  opacity: 0.5;
+}
+
+.knob {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin: 0 auto;
+  border-color: var(--main-background-color-darker);
+  border-width: 2px;
+  border-style: solid;
+  transition: transform 1s;
+}
+
+.knob-value {
+  margin: 0 auto;
+  height: 40%;
+  width: 1px;
+  background-color: var(--main-background-color-darker);
+  border-radius: 10%;
+  border-color: var(--main-background-color-darker);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.knob-label {
+  margin: 5px auto;
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.knob-value-label {
+  opacity: 0;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.switch-value-label {
+  visibility: hidden;
+  opacity: 0;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.knob-container:hover .knob-value-label {
+  opacity: 1;
+}
+
+.switch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switch {
+  display: flex;
+  flex-direction: column;
+  width: 14px;
+  height: 40px;
+  border-radius: 10px;
+  border-color: var(--main-background-color-darker);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.switch-value {
+  height: 12px;
+  border-radius: 100%;
+  border-color: var(--main-background-color-darker);
+  background-color: var(--main-background-color-lighter-30);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.switch-off {
+  justify-content: flex-end;
+}
+
+.switch-mid {
+  justify-content: center;
+}
+
+.switch-wrapper {
+  display: flex;
+}
+
+.switch-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 44px;
+
+  font-size: 6px;
+  text-transform: uppercase;
+
+  padding: 2px;
+}
+
+.switch-labels div {
+  padding: 2px;
+}
+
+.switch-state {
+  width: 2px;
+  height: 2px;
+  border-radius: 100%;
+
+  background-color: var(--main-background-color-darker);
+}
+
+.switch-state-selected {
+  background-color: var(--main-accent-color);
+}
+
+.screen-container {
+  display: flex;
+  justify-content: center;
+}
+
+.screen {
+  width: 120px;
+  height: 44px;
+
+  background-color: var(--main-background-color-darker-80);
+
+  border-radius: 5px;
+
+  padding: 5px;
+
+  color: var(--main-background-color);
+  font-family: monospace;
+
+  font-size: 0.7rem;
+}
+
+.panel-push-button-container {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.push-button {
+  width: 40px;
+  height: 10px;
+
+  border: solid black 2px;
+  border-radius: 4px;
+
+  padding: 5px;
+}
+
+.triangle_button {
+  /* Center the content */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  /* Spacing */
+  padding: 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.triangle_button_triangle {
+  border-style: solid;
+}
+
+.triangle_button_triangle_bottom {
+  border-color: var(--main-background-color-darker) transparent transparent;
+  border-width: 0.5rem 0.5rem 0;
+}
