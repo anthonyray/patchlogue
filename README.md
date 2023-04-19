@@ -16,4 +16,6 @@ Supported browsers :
 
 `patchlogue` has been tested with the KORG Prologue 16 synthesizer, but should work with the KORG Prologue 8. 
 
+# Contributing 
 
+The CI will execute the `ci-checks/ci.sh` scripts for every commit.
