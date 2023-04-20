@@ -24,11 +24,21 @@ body {
   color: var(--main-text-color);
 }
 
-header {
-  text-align: center;
+header { 
+  display: flex;
+  justify-content: center;
   font-family: monospace;
   border-bottom: var(--main-background-color-darker) solid 1px;
   padding: 0.8rem;
+}
+
+header div {
+  margin-left: auto;
+}
+
+header img {
+  right:0;
+  width:17px;
 }
 
 .menu {

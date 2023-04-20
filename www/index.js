@@ -227,6 +227,11 @@ document.querySelector(".full-screen-menu__close").addEventListener('click', (e)
     document.querySelector(".full-screen-menu").classList.toggle("full-screen-closed");
 })
 
+document.querySelector("#help").addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector(".full-screen-menu").classList.toggle("full-screen-closed");
+})
+
 let load_patch_link_el = document.querySelector("#load_patch");
 let load_patch_input_el = document.querySelector("#load_patch_input");
 
