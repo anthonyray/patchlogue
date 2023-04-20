@@ -24,7 +24,7 @@ body {
   color: var(--main-text-color);
 }
 
-header { 
+header {
   display: flex;
   justify-content: center;
   font-family: monospace;
@@ -37,8 +37,8 @@ header div {
 }
 
 header img {
-  right:0;
-  width:17px;
+  right: 0;
+  width: 17px;
 }
 
 .menu {
@@ -332,17 +332,16 @@ header img {
 }
 
 .full-screen-menu {
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .full-screen-menu-container {
@@ -352,13 +351,13 @@ header img {
 }
 
 .full-screen-menu__close {
-    /* Shown at top left corner */
-    right: 1rem;
-    position: absolute;
-    top: 1rem;
+  /* Shown at top left corner */
+  right: 1rem;
+  position: absolute;
+  top: 1rem;
 }
 
 .full-screen-closed {
   visibility: hidden;
-  z-index:-1;
+  z-index: -1;
 }

@@ -17,4 +17,5 @@ cargo test
 echo "Running formatting for www"
 ( cd www ; npx prettier --check *.html )
 ( cd www ; npx prettier --check *.css )
+( cd www ; npx prettier --check *.js )
 echo "done"
