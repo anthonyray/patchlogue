@@ -98,7 +98,6 @@ header {
   gap: 5px;
 }
 
-
 .dropdown_content {
   /* Hide the dropdown's content by default */
   display: none;
@@ -320,4 +319,36 @@ header {
 .triangle_button_triangle_bottom {
   border-color: var(--main-background-color-darker) transparent transparent;
   border-width: 0.5rem 0.5rem 0;
+}
+
+.full-screen-menu {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.full-screen-menu-container {
+  position: absolute;
+  padding: 5rem;
+  background-color: var(--main-background-color-darker);
+}
+
+.full-screen-menu__close {
+    /* Shown at top left corner */
+    right: 1rem;
+    position: absolute;
+    top: 1rem;
+}
+
+.full-screen-closed {
+  visibility: hidden;
+  z-index:-1;
 }
