@@ -1,119 +1,106 @@
-import {handleMIDIMessage, handleMIDIAccessGranted, handleMIDIAccessDenied} from "./midi.js"
+import { handleMIDIMessage, handleMIDIAccessGranted, handleMIDIAccessDenied} from "./midi.js"
 import { updateSwitch, updateKnob, updateLeds, updateGenericKnob, updateScreen} from "./ui.js";
 
-navigator.requestMIDIAccess({sysex: true, software: true})
-    .then((midiAccess) => {
-        // Populate the list of MIDI inputs in the UI.
-        let input_devices_element = document.querySelector("#midi_input_devices_container");
-        input_devices_element.innerHTML = ""; // Resets the HTML
-        var template = document.querySelector("#midi_device_item");
-        for (const [id, device] of midiAccess.inputs) {
-            const clone = template.content.cloneNode(true);
-            clone.querySelector("#midi_device_item__name").innerHTML = device.name;
-            clone.firstElementChild.addEventListener('click', event => {
-                document.querySelector("#midi_input_device_selected_item").innerHTML = device.name;
-                device.onmidimessage = (event) => {
-                    handleMIDIMessage(event, (program) => { 
-                        let program_name = program.program_name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                        let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(program, undefined, 2));
-                        let save_patch_el = document.querySelector("#save_patch");
-                        save_patch_el.setAttribute("href", data);
-                        save_patch_el.setAttribute("download", program_name + ".json");                    
-                        updateUI(program);
-                    })
-                };
-            })
-            input_devices_element.appendChild(clone);
+async function initialize() {
+    let template = document.querySelector("#midi_device_item");
+    let input_devices_element = document.querySelector("#midi_input_devices_container");
+    let output_devices_element = document.querySelector("#midi_output_devices_container");
+    
+    try {
+        const midi_access = await navigator.requestMIDIAccess({sysex: true, software: false});
+
+        midi_access.onstatechange = (event) => {
+            // Handle state change event
         }
 
-        // Populate the list of MIDI outputs in the UI. 
-        let output_devices_element = document.querySelector("#midi_output_devices_container");
-        output_devices_element.innerHTML = ""; // Resets the HTML
-        var template = document.querySelector("#midi_device_item");
-        for (const [id, device] of midiAccess.outputs) {
-            const clone = template.content.cloneNode(true);
-            clone.querySelector("#midi_device_item__name").innerHTML = device.name;
-            clone.firstElementChild.addEventListener('click', event => {
-                // Mandatory : Display the name of the selected device in the UI. 
-                document.querySelector("#midi_output_device_selected_item").innerHTML = device.name;
-                // Bind actions to current midi device. 
-                let retrieve_patch_btn = document.querySelector("#menu-retrieve-patch");
-                let retrieve_patch_status = document.querySelector("#menu-retrieve-patch-status").classList.replace("connection_status__notselected", "connection_status__disconnected");
+        input_devices_element.innerHTML = ""; 
 
-                retrieve_patch_btn.parentNode.classList.remove("menu_button_disabled");
-                retrieve_patch_btn.addEventListener('click', event => {
-                    console.log("sending prog");
-                    device.send([0xF0, 0x42, 0x3a, 0x00, 0x01, 0x4b, 0x10, 0xF7]); // Send current program data dump req
-
-                })
-            });
-            output_devices_element.appendChild(clone);
-        }
-
-    }, 
-    handleMIDIAccessDenied);
-
-
-/*navigator.requestMIDIAccess({sysex: true, software: true})
-    .then(
-        (midiAccess) => { 
-            handleMIDIAccessGranted(midiAccess, (program) => {
-                updateUI(program)
-            }, 
-            (midi_devices) => {
-                let devices_element = document.querySelector("#midi_devices_container");
-                devices_element.innerHTML = ""; 
-                let template = document.querySelector("#midi_device_item");
-                for (const [id, device] of midi_devices) {
-                    const clone = template.content.cloneNode(true);
-                    clone.querySelector("#midi_device_item__name").innerHTML = device.name;
-                    clone.firstElementChild.addEventListener('click', event => {
-                        // Make this device the preferred device to send MIDI data to. 
-                        
-                        // Mandatory : Display the name of the selected device in the UI. 
-                        document.querySelector("#midi_device_selected_item").innerHTML = device.name;
-                        
-                        // Bind actions to current midi device. 
-                        let connection_status_el = document.querySelector("#connection_status");
-                        connection_status_el.classList.replace("connection_status__notselected", "connection_status__disconnected");
-                        connection_status_el.classList.add("connection_status__disconnected");
-
-                        console.log(device);
-                        // Let's send a Search Device Reply Message to all outputs
-
-
-
-
-
-
-
-                    });
-                    devices_element.appendChild(clone);
+        for (const [id, device] of midi_access.inputs) {
+            let midi_device_element = midi_item_element(template, device, (device) => {
+                // When selecting a new input MIDI device
+                // 0. We should remove any registered onmidimessage event handler
+                for (const [id, device] of midi_access.inputs) {
+                    delete device.onmidimessage;
                 }
-            }
-    )}, 
-    handleMIDIAccessDenied);*/
+                // 1. Register an handler for onmidimessage event for the concerned midi device
+                device.onmidimessage = (event) => {
+                    handleMIDIMessage(event, (program) => {
+                        // Render parts of the UI that depends on a onProgramEvent
+                        updatePanel(program);
+                    })
+                } 
+                // 1. MIDI input selected device should be updated
+                render_selected_device_element("#midi_input_device_selected_item", device.name);
 
-let load_patch_link_el = document.querySelector("#load_patch");
-let load_patch_input_el = document.querySelector("#load_patch_input");
-load_patch_link_el.addEventListener("click", (event) => {
-    if (load_patch_input_el) {
-        load_patch_input_el.click();
+            });
+            input_devices_element.appendChild(midi_device_element);
+        }
+        
+        output_devices_element.innerHTML = "";
+        for (const [id, device] of midi_access.outputs) {
+            let midi_device_element = midi_item_element(template, device, (device) => {
+                // When selecting a new output MIDI message
+                // 0. The MIDI messages will be sent to the selected output MIDI device
+                render_retrieve_patch("#menu-retrieve-patch", device, (device) => {
+                    // Send the sysex message to the selected output
+                    device.send([0xF0, 0x42, 0x3a, 0x00, 0x01, 0x4b, 0x10, 0xF7]);
+                })
+                // 1. MIDI output selected device should be updated
+                render_selected_device_element("#midi_output_device_selected_item", device.name);
+
+            });
+            output_devices_element.appendChild(midi_device_element)
+        }
+    } catch (error) {
+        console.log(error)
     }
-    event.preventDefault();
-}, false);
+}
 
-load_patch_input_el.onchange = (event) => {
-    let files = document.querySelector("#load_patch_input").files;
-    files[0].text().then((t) => {
-        let program = JSON.parse(t);
-        updateUI(program);
+function render_selected_device_element(querySelector, selected_device_name) {
+    document.querySelector(querySelector).innerHTML = selected_device_name;
+}
+
+function render_save_patch_element(querySelector, program) {
+    let program_name = program.program_name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(program, undefined, 2));
+    let save_patch_el = document.querySelector(querySelector);
+    save_patch_el.setAttribute("href", data);
+    save_patch_el.setAttribute("download", program_name + ".json");
+}
+
+function render_retrieve_patch(querySelector, midiDevice, onClick) {
+    let retrieve_patch_btn = document.querySelector(querySelector);
+    
+    let retrieve_patch_status = retrieve_patch_btn.querySelector(".connection_status").classList.replace("connection_status__notselected", "connection_status__disconnected");
+    retrieve_patch_btn.classList.remove("menu_button_disabled");
+    
+    retrieve_patch_btn.addEventListener('click', event => {
+        onClick(midiDevice)
     });
-};
+}
 
-function updateUI(program){
-    document.querySelector("#menu-retrieve-patch-status").classList.replace("connection_status__disconnected", "connection_status__connected")
+function midi_item_element(template, midiDevice, onClick) { 
+    const component = template.content.cloneNode(true);
+    component.querySelector("#midi_device_item__name").innerHTML = midiDevice.name;
+    component.firstElementChild.addEventListener('click', event => {
+        onClick(midiDevice);
+        event.preventDefault(); 
+    });
+    return component;
+}
+
+function updatePanel(program) {
+    // Remove panel opacity
     document.querySelector(".panel").classList.remove("panel-unavailable")
+
+    // Update save patch 
+    render_save_patch_element("#save_patch", program);
+
+    // Update retrieve patch
+    // document.querySelector("#menu-retrieve-patch-status").classList.replace("connection_status__disconnected", "connection_status__connected")
+    //render_retrieve_patch()
+
+    // Update Sections
     updateVoiceSection(program); 
     updateOscillatorsSection(program); // TODO 
     updateMixerSection(program); // TODO 
@@ -222,7 +209,6 @@ function updateEnveloppeSection(program) {
 
 }
 
-
 function updateTimbreSection(program) {
     updateKnob("#timbre-mainsub-balance .knob", "#timbre-mainsub-balance .knob-value-label", program.main_sub_balance);
     updateSwitch("#timbretype .switch", program.timbre_type, w => w == "Split", w => w == "Layer", w => w == "Xfade"); // TODO 
@@ -234,4 +220,27 @@ function updateVoiceSection(program) {
     updateKnob("#voice-mode-depth .knob", "#voice-mode-depth .knob-value-label", program.timbre1.voice_mode_depth);
 }
 
+initialize();
 
+document.querySelector(".full-screen-menu__close").addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector(".full-screen-menu").classList.toggle("full-screen-closed");
+})
+
+let load_patch_link_el = document.querySelector("#load_patch");
+let load_patch_input_el = document.querySelector("#load_patch_input");
+
+load_patch_link_el.addEventListener("click", (event) => {
+    if (load_patch_input_el) {
+        load_patch_input_el.click();
+    }
+    event.preventDefault();
+}, false);
+
+load_patch_input_el.onchange = (event) => {
+    let files = document.querySelector("#load_patch_input").files;
+    files[0].text().then((t) => {
+        let program = JSON.parse(t);
+        updatePanel(program);
+    });
+};
