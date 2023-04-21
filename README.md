@@ -1,4 +1,5 @@
 # patchlogue
+[![Continuous Integration](https://github.com/anthonyray/patchlogue/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/anthonyray/patchlogue/actions/workflows/rust.yml)
 
 [A tool](https://www.patchlogue.com) to help you visualize patches created on your [KORG Prologue synthesizer](https://www.korg.com/products/synthesizers/prologue/).
 
