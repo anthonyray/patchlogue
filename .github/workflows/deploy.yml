@@ -26,7 +26,7 @@ jobs:
       working-directory: www
       run: npm i
     - name: Build www
-      run: npm run --prefix www build
+      run: NODE_OPTIONS=--openssl-legacy-provider npm run --prefix www build
     - uses: actions/upload-pages-artifact@v1.0.8
       with: 
         path: "www/dist/"
