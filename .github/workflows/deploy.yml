@@ -1,4 +1,4 @@
-name: Build and deploy app
+name: Build and Deploy app
 
 on:
   push:
@@ -14,7 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build WASM
+    - name: Install wasm-pack
+      run: cargo install wasm-pack
+    - name: Build wasm
       run: wasm-pack build
     - name: Build www
       run: npm run --prefix www build
