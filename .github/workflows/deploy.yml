@@ -18,6 +18,9 @@ jobs:
       run: cargo install wasm-pack
     - name: Build wasm
       run: wasm-pack build
+    - name: install dev deps for www build
+      working-directory: www
+      run: npm i
     - name: Build www
       run: npm run --prefix www build
     - uses: actions/upload-pages-artifact@v1.0.8
