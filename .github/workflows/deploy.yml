@@ -16,6 +16,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install wasm-pack
       run: cargo install wasm-pack
+    - name: Setup Node.js env
+      uses: actions/setup-node@v2.5.2
+      with: 
+        node-version: lts
     - name: Build wasm
       run: wasm-pack build
     - name: install dev deps for www build
