@@ -346,7 +346,9 @@ header img {
 
 .full-screen-menu-container {
   position: absolute;
-  padding: 5rem;
+  margin: 20rem;
+  padding: 3rem;
+  padding-bottom: 1rem;
   background-color: var(--main-background-color-darker);
 }
 
@@ -355,9 +357,68 @@ header img {
   right: 1rem;
   position: absolute;
   top: 1rem;
+  opacity: 0.5;
+}
+
+.full-screen-menu__close:hover {
+  opacity: 1;
+}
+.full-screen-menu__close:before,
+.full-screen-menu__close:after {
+  position: absolute;
+  content: " ";
+  height: 15px;
+  width: 1px;
+  background-color: var(--main-text-color);
+}
+.full-screen-menu__close:before {
+  transform: rotate(45deg);
+}
+.full-screen-menu__close:after {
+  transform: rotate(-45deg);
 }
 
 .full-screen-closed {
   visibility: hidden;
   z-index: -1;
+}
+
+.brand {
+  font-family: monospace;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+}
+
+.tab_item {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.tab_item__active {
+  border: 1px solid var(--main-text-color-lighter-30);
+  border-bottom-color: transparent;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.tab_item__inactive {
+  border-bottom: 1px solid var(--main-text-color-lighter-30);
+}
+
+#letsgo {
+  border: solid 1px var(--main-text-color);
+  margin-right: 1rem;
+  padding: 1rem 1.5rem;
+  text-align: right;
+  text-decoration-style: dashed;
+  text-decoration-color: red;
+}
+
+#letsgo:hover {
+  background-color: var(--main-background-color-darker-80);
+  color: var(--main-background-color-lighter-30);
 }
