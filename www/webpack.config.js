@@ -12,6 +12,7 @@ module.exports = {
     new CopyWebpackPlugin([
       "index.html",
       "style.css",
+      "favicon.ico",
       { from: "assets/help.svg", to: "assets/help.svg" },
     ]),
   ],
