@@ -204,6 +204,9 @@ function updateFXSection(program) {
   } else {
     document.querySelector("#delayreverb_effect_type").innerHTML = "";
   }
+
+  // Update program name
+  updateScreen("#effect-screen > .screen", program.program_name);
 }
 
 function updateFilterSection(program) {
