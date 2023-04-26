@@ -13,65 +13,122 @@
         <a type="button" class="full-screen-menu__close"></a>
 
         <nav class="tab">
-          <div class="tab_item tab_item__active"><small>👋</small></div>
-          <div class="tab_item tab_item__inactive" style="flex-grow: 1">
+          <div
+            id="hi_tab_trig"
+            class="tab_item tab_item__active"
+            style="font-size: 0.8rem"
+          >
+            👋
+          </div>
+          <div id="howto_tab_trig" class="tab_item tab_item__inactive">
+            Tutorial
+          </div>
+          <div id="about_tab_trig" class="tab_item tab_item__inactive">
             About
           </div>
         </nav>
         <br />
-        <p>
-          <b><span class="brand">patchlogue</span></b> is a tool to help you
-          <b>visualize</b> the patches you created on your
-          <a href="https://www.korg.com/fr/products/synthesizers/prologue/"
-            >KORG Prologue synthesizer</a
-          >.
-        </p>
+        <div id="hi_tab" class="tab_content">
+          <p>
+            <b><span class="brand">patchlogue</span></b> is a tool to help you
+            <b>visualize</b> the patches you created on your
+            <a href="https://www.korg.com/fr/products/synthesizers/prologue/"
+              >KORG Prologue synthesizer</a
+            >.
+          </p>
 
-        <p>
-          Just plug your KORG Prologue in, select the appropriate MIDI INs and
-          OUTs, and start visualizing your patches !
-        </p>
+          <p>
+            Just plug your KORG Prologue in, select the appropriate MIDI INs and
+            OUTs, and start visualizing your patches !
+          </p>
 
-        <p>
-          <i>In one glance</i>, you can <b>inspect</b> and get a sense of
-          <b>the parameters</b> used to make up the sound of your patches. You
-          can also <b>save your patches</b> so that you can visualize them
-          later.
-        </p>
+          <p>
+            <i>In one glance</i>, you can <b>inspect</b> and get a sense of
+            <b>the parameters</b> used to make up the sound of your patches. You
+            can also <b>save your patches</b> so that you can visualize them
+            later.
+          </p>
 
-        <p>
-          <b><span class="brand">patchlogue</span></b> addresses the issue that
-          plagues synthesizers with patch recall : On loading a saved patch,
-          physical knobs of your synth
-          <b>no longer matches the actual values</b> of the parameters they
-          control. <br /><b><span class="brand">patchlogue</span></b> comes in
-          handy in those situations, providing you with a
-          <b>clear visualization</b> of your parameters.
-        </p>
+          <p>
+            <b><span class="brand">patchlogue</span></b> addresses the issue
+            that plagues synthesizers with patch recall : On loading a saved
+            patch, physical knobs of your synth
+            <b>no longer matches the actual values</b> of the parameters they
+            control. <br /><b><span class="brand">patchlogue</span></b> comes in
+            handy in those situations, providing you with a
+            <b>clear visualization</b> of your parameters.
+          </p>
 
-        <p>
-          For any bugs / feature requests, head over to
-          <a href="https://github.com/anthonyray/patchlogue/"
-            >the Github repository</a
-          >.
-        </p>
-        <p style="text-align: center; padding: 1rem">
-          <span id="letsgo">Let's go!</span>
-        </p>
+          <p>
+            For any bugs / feature requests, head over to
+            <a href="https://github.com/anthonyray/patchlogue/"
+              >the Github repository</a
+            >.
+          </p>
+          <p style="text-align: center; padding: 1rem">
+            <span id="letsgo">Let's go!</span>
+          </p>
 
-        <p style="text-align: center">
-          <small
-            ><br />Is patchlogue helpful to you ? Please consider a small
-            donation! <br
-          /></small>
-          <br />
-          <a href="https://www.buymeacoffee.com/anthor" target="_blank"
-            ><img
-              src="https://cdn.buymeacoffee.com/buttons/v2/arial-black.png"
-              alt="Buy Me A Coffee"
-              style="height: 35px !important; width: 126px !important"
-          /></a>
-        </p>
+          <p style="text-align: center">
+            <small
+              ><br />Is patchlogue helpful to you ? Please consider a small
+              donation! <br
+            /></small>
+            <br />
+            <a href="https://www.buymeacoffee.com/anthor" target="_blank"
+              ><img
+                src="https://cdn.buymeacoffee.com/buttons/v2/arial-black.png"
+                alt="Buy Me A Coffee"
+                style="height: 35px !important; width: 126px !important"
+            /></a>
+          </p>
+        </div>
+        <div id="howto_tab" class="tab_content" style="display: none">
+          <p>
+            <span class="brand">patchlogue</span> gives you a beautiful
+            visualization of your patches created on the
+            <b>KORG Prologue 8</b> / <b>KORG Prologue 16</b>.
+          </p>
+          <ol>
+            <li>Plug in your synthesizer using a USB cable</li>
+            <li>Give `patchlogue` the permission for MIDI access</li>
+            <li>
+              First, select the MIDI input in the MIDI input dropdown. If you
+              didn't modify your factory settings, it should be :
+              <b>PROLOGUE KBD/KNB</b>
+            </li>
+            <li>
+              Second, select the MIDI output in the MIDI output dropdown. If you
+              didn't modify your factory settings, it should be :
+              <b>PROLOGUE SND</b>
+            </li>
+            <li>
+              Hit the `retrieve patch` button and you can now see all your
+              parameters conveniently laid out 🎉!
+            </li>
+          </ol>
+          <p><b>Supported synthesizers</b></p>
+          <ul>
+            <li>KORG Prologue 8</li>
+            <li>KORG Prologue 16</li>
+          </ul>
+          <p style="text-align: center; padding: 1rem">
+            <span id="letsgo">Let's go!</span>
+          </p>
+        </div>
+        <div
+          id="about_tab"
+          class="tab_content"
+          style="display: none; text-align: center"
+        >
+          <p><span class="brand">patchlogue</span>, build #<i>xxx</i></p>
+          <p>
+            <a href="https://github.com/anthonyray/patchlogue"
+              >Github repository</a
+            >
+          </p>
+          <p><small>Built with 💙, and ☕️ in Paris</small></p>
+        </div>
       </div>
     </div>
     <header>

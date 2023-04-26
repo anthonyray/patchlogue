@@ -41,6 +41,14 @@ header img {
   width: 17px;
 }
 
+ol li {
+  padding: 0.5rem 0.5rem;
+}
+
+ul li {
+  padding: 0.5rem 0.5rem;
+}
+
 .menu {
   display: flex;
   padding-top: 0.5rem;
@@ -346,10 +354,11 @@ header img {
 
 .full-screen-menu-container {
   position: absolute;
-  margin: 20rem;
-  padding: 3rem;
-  padding-bottom: 1rem;
+  margin-top: 3rem;
+  padding: 2rem 3rem;
   background-color: var(--main-background-color-darker);
+  width: 50%;
+  height: 80%;
 }
 
 .full-screen-menu__close {
@@ -390,6 +399,7 @@ header img {
 .tab {
   display: flex;
   align-items: center;
+  border-bottom: 1px solid var(--main-text-color-lighter-30);
 }
 
 .tab_item {
@@ -401,12 +411,9 @@ header img {
 .tab_item__active {
   border: 1px solid var(--main-text-color-lighter-30);
   border-bottom-color: transparent;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
 }
 
 .tab_item__inactive {
-  border-bottom: 1px solid var(--main-text-color-lighter-30);
 }
 
 #letsgo {
@@ -421,4 +428,8 @@ header img {
 #letsgo:hover {
   background-color: var(--main-background-color-darker-80);
   color: var(--main-background-color-lighter-30);
+}
+
+.tab_content {
+  display: none;
 }

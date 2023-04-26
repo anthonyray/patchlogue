@@ -515,11 +515,72 @@ document.querySelector("#help").addEventListener("click", (e) => {
     .classList.toggle("full-screen-closed");
 });
 
-document.querySelector("#letsgo").addEventListener("click", (e) => {
+document.querySelector("#hi_tab_trig").addEventListener("click", (e) => {
   e.preventDefault();
   document
-    .querySelector(".full-screen-menu")
-    .classList.toggle("full-screen-closed");
+    .querySelector("#hi_tab_trig")
+    .classList.replace("tab_item__inactive", "tab_item__active");
+
+  document
+    .querySelector("#about_tab_trig")
+    .classList.replace("tab_item__active", "tab_item__inactive");
+  document
+    .querySelector("#howto_tab_trig")
+    .classList.replace("tab_item__active", "tab_item__inactive");
+
+  document.querySelector("#about_tab").style.display = "none";
+  document.querySelector("#howto_tab").style.display = "none";
+
+  document.querySelector("#hi_tab").style.display = "block";
+});
+
+document.querySelector("#howto_tab_trig").addEventListener("click", (e) => {
+  e.preventDefault();
+  document
+    .querySelector("#howto_tab_trig")
+    .classList.replace("tab_item__inactive", "tab_item__active");
+
+  document
+    .querySelector("#hi_tab_trig")
+    .classList.replace("tab_item__active", "tab_item__inactive");
+  document
+    .querySelector("#about_tab_trig")
+    .classList.replace("tab_item__active", "tab_item__inactive");
+
+  document.querySelector("#hi_tab").style.display = "none";
+  document.querySelector("#about_tab").style.display = "none";
+
+  document.querySelector("#howto_tab").style.display = "block";
+});
+
+document.querySelector("#about_tab_trig").addEventListener("click", (e) => {
+  e.preventDefault();
+  document
+    .querySelector("#about_tab_trig")
+    .classList.replace("tab_item__inactive", "tab_item__active");
+
+  document
+    .querySelector("#hi_tab_trig")
+    .classList.replace("tab_item__active", "tab_item__inactive");
+  document
+    .querySelector("#howto_tab_trig")
+    .classList.replace("tab_item__active", "tab_item__inactive");
+
+  document.querySelector("#hi_tab").style.display = "none";
+  document.querySelector("#howto_tab").style.display = "none";
+
+  document.querySelector("#about_tab").style.display = "block";
+});
+
+document.querySelector("#hi_tab_trig").click();
+
+document.querySelectorAll("#letsgo").forEach((el) => {
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    document
+      .querySelector(".full-screen-menu")
+      .classList.toggle("full-screen-closed");
+  });
 });
 
 let load_patch_link_el = document.querySelector("#load_patch");
