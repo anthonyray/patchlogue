@@ -3,20 +3,29 @@
 
 [A tool](https://www.patchlogue.com) to help you visualize patches created on your [KORG Prologue synthesizer](https://www.korg.com/products/synthesizers/prologue/).
 
+Just plug your KORG Prologue in, select the appropriate MIDI INs and OUTs, and start visualizing your patches !
+
+In one glance, you can inspect and get a sense of the parameters used to make up the sound of your patches. You can also save your patches so that you can visualize them later.
+
 # Usage
+## Setting up patchlogue
 1. Head over to [patchlogue.com](https://www.patchlogue.com)
 2. Plug your synthesizer in using USB
+3. Give patchlogue your permission for MIDI access
 3. Select `PROLOGUE KBD/KNB` as your MIDI input and `PROLOGUE SND` as MIDI output
-4. Click on the "retrieve patch" button to visualize your current patch
+4. You're all set 🎉 !
 
-Supported browsers :
+## Visualizing your patches
+Just hit the "`retrieve patch`" button and you will see all your parameters laid out !
+
+## Saving / loading your patches
+You can save your patch by hitting the "`save patch`" button. This will produce a `JSON` file that you can load later using the "`load patch`" button. 
+
+### Supported browsers :
 - Mozilla Firefox
 - Google Chrome
 
-# Supported synthesizers
+### Supported synthesizers
 
-`patchlogue` has been tested with the KORG Prologue 16 synthesizer, but should work with the KORG Prologue 8. 
+`patchlogue` has been tested with the **KORG Prologue 16** synthesizer, but should work with the **KORG Prologue 8**. 
 
-# Contributing 
-
-The CI will execute the `ci-checks/ci.sh` scripts for every commit.
