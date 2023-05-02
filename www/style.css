@@ -28,7 +28,7 @@ body {
 
 body {
   background-color: var(--main-background-color);
-  font-family: sans-serif;
+  font-family: monospace;
   color: var(--main-text-color);
   padding: 0 0.5rem;
 }
