@@ -14,6 +14,7 @@ module.exports = {
       "style.css",
       "favicon.ico",
       { from: "assets/help.svg", to: "assets/help.svg" },
+      { from: "assets/github.svg", to: "assets/github.svg" },
     ]),
   ],
 };
