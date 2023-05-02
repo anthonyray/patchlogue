@@ -57,6 +57,7 @@ footer {
 }
 
 footer {
+  margin-top: 2rem;
   border-top: var(--main-background-color-darker) solid 1px;
 }
 
