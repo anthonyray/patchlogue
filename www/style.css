@@ -18,18 +18,50 @@
   --main-green-lighter: rgb(236, 247, 229);
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   background-color: var(--main-background-color);
   font-family: sans-serif;
   color: var(--main-text-color);
+  padding: 0 0.5rem;
 }
 
-header {
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main .panel {
+  flex-grow: 1;
+}
+
+main header,
+main footer,
+main .menu {
+  flex-shrink: 0;
+}
+
+header,
+footer {
   display: flex;
   justify-content: center;
   font-family: monospace;
   border-bottom: var(--main-background-color-darker) solid 1px;
   padding: 0.8rem;
+}
+
+footer {
+  border-top: var(--main-background-color-darker) solid 1px;
+}
+
+footer img {
+  height: 12px;
 }
 
 header div {

@@ -131,696 +131,715 @@
         </div>
       </div>
     </div>
-    <header>
-      <div>patchlogue</div>
-      <div><img id="help" src="assets/help.svg" /></div>
-    </header>
-    <div class="menu">
-      <div class="menu_section">
-        <div class="menu_button dropdown" style="width: 50%">
-          <div class="dropdown_trigger dropdown_display">
+    <main>
+      <header>
+        <div>patchlogue</div>
+        <div><img id="help" src="assets/help.svg" /></div>
+      </header>
+      <div class="menu">
+        <div class="menu_section">
+          <div class="menu_button dropdown" style="width: 50%">
+            <div class="dropdown_trigger dropdown_display">
+              <div
+                style="
+                  border-right: solid 1px var(--main-background-color-darker);
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                <div
+                  style="margin: 10px"
+                  class="connection_status connection_status__notselected"
+                ></div>
+              </div>
+              <div
+                id="midi_input_device_selected_item"
+                style="width: 100%; align-self: center"
+              >
+                <tt>receive patch from ...</tt>
+              </div>
+              <div
+                style="
+                  border-left: solid 1px var(--main-background-color-darker);
+                "
+              >
+                <button class="triangle_button">
+                  <div
+                    class="triangle_button_triangle triangle_button_triangle_bottom"
+                  ></div>
+                </button>
+              </div>
+            </div>
+
+            <template id="midi_device_item">
+              <div style="padding: 5px" id="midi_device_item__name"></div>
+            </template>
+            <!-- The content -->
             <div
+              id="midi_input_devices_container"
+              class="dropdown_content"
               style="
-                border-right: solid 1px var(--main-background-color-darker);
-                display: flex;
-                align-items: center;
+                border: solid 1px var(--main-background-color-darker);
+                width: 100%;
               "
             >
+              <i>Please connect a MIDI device</i>
+            </div>
+          </div>
+          <div class="menu_button dropdown" style="width: 50%">
+            <div class="dropdown_trigger dropdown_display">
               <div
-                style="margin: 10px"
+                style="
+                  border-right: solid 1px var(--main-background-color-darker);
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                <div
+                  style="margin: 10px"
+                  class="connection_status connection_status__notselected"
+                ></div>
+              </div>
+              <div
+                id="midi_output_device_selected_item"
+                style="width: 100%; align-self: center"
+              >
+                <tt>request patch from...</tt>
+              </div>
+              <div
+                style="
+                  border-left: solid 1px var(--main-background-color-darker);
+                "
+              >
+                <button class="triangle_button">
+                  <div
+                    class="triangle_button_triangle triangle_button_triangle_bottom"
+                  ></div>
+                </button>
+              </div>
+            </div>
+
+            <!-- The content -->
+            <div
+              id="midi_output_devices_container"
+              class="dropdown_content"
+              style="
+                border: solid 1px var(--main-background-color-darker);
+                width: 100%;
+              "
+            >
+              <i>Please connect a MIDI device</i>
+            </div>
+          </div>
+        </div>
+        <div class="menu_section">
+          <div
+            id="menu-retrieve-patch"
+            class="menu_button menu_button_disabled"
+            style="align-self: center; display: flex"
+          >
+            <div style="padding: 10px">
+              <div
+                id="menu-retrieve-patch-status"
                 class="connection_status connection_status__notselected"
               ></div>
             </div>
             <div
-              id="midi_input_device_selected_item"
-              style="width: 100%; align-self: center"
-            >
-              <tt>receive patch from ...</tt>
-            </div>
-            <div
-              style="border-left: solid 1px var(--main-background-color-darker)"
-            >
-              <button class="triangle_button">
-                <div
-                  class="triangle_button_triangle triangle_button_triangle_bottom"
-                ></div>
-              </button>
-            </div>
-          </div>
-
-          <template id="midi_device_item">
-            <div style="padding: 5px" id="midi_device_item__name"></div>
-          </template>
-          <!-- The content -->
-          <div
-            id="midi_input_devices_container"
-            class="dropdown_content"
-            style="
-              border: solid 1px var(--main-background-color-darker);
-              width: 100%;
-            "
-          >
-            <i>Please connect a MIDI device</i>
-          </div>
-        </div>
-        <div class="menu_button dropdown" style="width: 50%">
-          <div class="dropdown_trigger dropdown_display">
-            <div
+              id="menu-retrieve-patch-old"
               style="
-                border-right: solid 1px var(--main-background-color-darker);
-                display: flex;
-                align-items: center;
+                border-left: 1px solid var(--main-background-color-darker);
+                padding: 8px;
               "
             >
-              <div
-                style="margin: 10px"
-                class="connection_status connection_status__notselected"
-              ></div>
+              retrieve patch
             </div>
+          </div>
+          <div
+            class="menu_button menu_button_disabled"
+            style="align-self: center"
+          >
+            <div style="padding: 8px"><a id="save_patch">save patch</a></div>
+          </div>
+          <div class="menu_button" style="align-self: center">
+            <div style="padding: 8px">
+              <input
+                id="load_patch_input"
+                type="file"
+                accept="text/*"
+                style="display: none"
+              /><a id="load_patch">load patch</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Panel -->
+      <div class="panel panel-unavailable">
+        <div class="panel-section" style="align-items: center; opacity: 0.3">
+          <!-- Timbre Section -->
+          <div class="panel-row"></div>
+          <div class="panel-title">timbre</div>
+          <div class="panel-row">
             <div
-              id="midi_output_device_selected_item"
-              style="width: 100%; align-self: center"
+              id="timbre-mainsub-balance"
+              class="knob-container panel-cell-fill"
             >
-              <tt>request patch from...</tt>
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">main/sub balance</div>
             </div>
+          </div>
+          <div class="panel-row">
+            <div id="timbretype" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>split</div>
+                  <div>xfade</div>
+                  <div>layer</div>
+                </div>
+              </div>
+              <div class="knob-label">type</div>
+            </div>
+            <div id="timbre-switch" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div class="switch-state switch-state-selected"></div>
+                  <div class="switch-state"></div>
+                  <div class="switch-state"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>main</div>
+                  <div>+</div>
+                  <div>sub</div>
+                </div>
+              </div>
+              <div class="knob-label">panel</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-section">
+          <!-- Voice Section -->
+          <div class="panel-title" style="display: none">voice</div>
+          <div class="panel-row">
+            <div id="portamento" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">portamento</div>
+            </div>
+          </div>
+          <div class="panel-row">
+            <div id="voice-spread" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">voice spread</div>
+            </div>
+          </div>
+          <div class="panel-row">
+            <div id="voice-mode-depth" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">voice mode <br />depth</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-section" style="flex-grow: 3">
+          <!-- Oscillators Section -->
+          <div class="panel-title">vco 1</div>
+          <div class="panel-row">
+            <div id="vco1-wave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>saw</div>
+                  <div>tri</div>
+                  <div>squ</div>
+                </div>
+              </div>
+              <div class="knob-label">wave</div>
+            </div>
+            <div id="vco1-octave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div class="switch-state"></div>
+                  <div class="switch-state switch-state-selected"></div>
+                  <div class="switch-state"></div>
+                  <div class="switch-state"></div>
+                </div>
+              </div>
+              <div class="knob-label">octave</div>
+            </div>
+            <div id="vco1-pitch" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">pitch</div>
+            </div>
+            <div id="vco1-shape" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">shape</div>
+            </div>
+            <div id="vco1-pitch-eg" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>all</div>
+                  <div>vco1+2</div>
+                  <div>vco2</div>
+                </div>
+              </div>
+              <div class="knob-label">pitch eg</div>
+            </div>
+            <div id="vco1-int" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">int</div>
+            </div>
+          </div>
+          <div class="panel-title">vco 2</div>
+          <div class="panel-row">
+            <div id="vco2-wave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>saw</div>
+                  <div>tri</div>
+                  <div>squ</div>
+                </div>
+              </div>
+              <div class="knob-label">wave</div>
+            </div>
+            <div id="vco2-octave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div class="switch-state"></div>
+                  <div class="switch-state switch-state-selected"></div>
+                  <div class="switch-state"></div>
+                  <div class="switch-state"></div>
+                </div>
+              </div>
+              <div class="knob-label">octave</div>
+            </div>
+            <div id="vco2-pitch" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">pitch</div>
+            </div>
+            <div id="vco2-shape" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">shape</div>
+            </div>
+            <div id="sync-ring" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>sync</div>
+                  <div></div>
+                  <div>ring</div>
+                </div>
+              </div>
+              <div class="knob-label"></div>
+            </div>
+            <div id="cross-mod-depth" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">cross mod <br />depth</div>
+            </div>
+          </div>
+          <div class="panel-title">multi engine</div>
+          <div class="panel-row">
+            <div id="multi-wave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>usr</div>
+                  <div>vpm</div>
+                  <div>noi</div>
+                </div>
+              </div>
+              <div class="knob-label">wave</div>
+            </div>
+            <div id="multi-octave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div class="switch-state"></div>
+                  <div class="switch-state switch-state-selected"></div>
+                  <div class="switch-state"></div>
+                  <div class="switch-state"></div>
+                </div>
+              </div>
+              <div class="knob-label">octave</div>
+            </div>
+            <div id="multi-screen" class="screen-container panel-cell-fill">
+              <div class="screen"></div>
+            </div>
+            <div id="multi-shape" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">shape</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-section">
+          <!-- Mixer Section -->
+          <div class="panel-title">mixer</div>
+          <div class="panel-row">
+            <div id="mixer-vco1-volume" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">vco1</div>
+            </div>
+          </div>
+          <div class="panel-row">
+            <div id="mixer-vco2-volume" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">vco2</div>
+            </div>
+          </div>
+          <div class="panel-row">
+            <div id="mixer-multi-volume" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">multi</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-section" style="flex-grow: 2">
+          <!-- F Section -->
+          <div class="panel-title">vcf</div>
+          <div id="vcf-cutoff" class="knob-container">
+            <div class="knob-value-label">...</div>
+            <div class="knob" style="width: 80px; height: 80px">
+              <div class="knob-value"></div>
+            </div>
+
+            <div class="knob-label">cutoff</div>
+          </div>
+          <div class="panel-row">
+            <div id="vcf-resonance" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+
+              <div class="knob-label">resonance</div>
+            </div>
+
+            <div id="vcf-egint" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+
+              <div class="knob-label">eg int</div>
+            </div>
+          </div>
+          <div class="panel-row">
+            <div id="vcf-drive" class="switch-container panel-cell-fill">
+              <div class="switch">
+                <div class="switch-value"></div>
+              </div>
+
+              <div class="knob-label">drive</div>
+            </div>
+            <div id="vcf-lowcut" class="switch-container panel-cell-fill">
+              <div class="switch">
+                <div class="switch-value"></div>
+              </div>
+
+              <div class="knob-label">lowcut</div>
+            </div>
+            <div id="vcf-keytrack" class="switch-container panel-cell-fill">
+              <div class="switch">
+                <div class="switch-value" style="bottom: 0px"></div>
+              </div>
+
+              <div class="knob-label">keytrack</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-section" style="flex-grow: 3">
+          <!-- Enveloppe Section -->
+          <div class="panel-title">amp eg</div>
+          <div class="panel-row">
+            <div id="amp-attack" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">attack</div>
+            </div>
+            <div id="amp-decay" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">decay</div>
+            </div>
+            <div id="amp-sustain" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">sustain</div>
+            </div>
+            <div id="amp-release" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">release</div>
+            </div>
+          </div>
+          <div class="panel-title">eg</div>
+          <div class="panel-row">
+            <div id="filter-eg-attack" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">attack</div>
+            </div>
+            <div id="filter-eg-decay" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">decay</div>
+            </div>
+            <div id="filter-eg-sustain" class="knob-container panel-cell-fill">
+              <div class="knob-value-label"></div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">sustain</div>
+            </div>
+            <div id="filter-eg-release" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">release</div>
+            </div>
+          </div>
+          <div class="panel-title">lfo</div>
+          <div class="panel-row">
+            <div id="lfo-wave" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>saw</div>
+                  <div>tri</div>
+                  <div>squ</div>
+                </div>
+              </div>
+
+              <div class="knob-label">wave</div>
+            </div>
+            <div id="lfo-mode" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>fast</div>
+                  <div>slow</div>
+                  <div>bpm</div>
+                </div>
+              </div>
+
+              <div class="knob-label">mode</div>
+            </div>
+            <div id="lfo-rate" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">rate</div>
+            </div>
+            <div id="lfo-int" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">int</div>
+            </div>
+            <div id="lfo-target" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div>pitch</div>
+                  <div>shape</div>
+                  <div>cutoff</div>
+                </div>
+              </div>
+
+              <div class="knob-label">target</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-section" style="flex-grow: 2">
+          <!-- Effects Section -->
+          <div class="panel-title">mod effect</div>
+          <div class="panel-row">
+            <div id="effect_mod" class="switch-container panel-cell-fill">
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div><i id="mod_effect_type"></i></div>
+                  <div>on</div>
+                  <div>off</div>
+                </div>
+              </div>
+            </div>
+            <div id="effect_speed" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">speed</div>
+            </div>
+            <div id="effect_depth" class="knob-container panel-cell-fill">
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
+              </div>
+              <div class="knob-label">depth</div>
+            </div>
+          </div>
+          <div class="panel-title">delay/reverb</div>
+          <div class="panel-row">
             <div
-              style="border-left: solid 1px var(--main-background-color-darker)"
+              id="effect_reverbdelay"
+              class="switch-container panel-cell-fill"
             >
-              <button class="triangle_button">
-                <div
-                  class="triangle_button_triangle triangle_button_triangle_bottom"
-                ></div>
-              </button>
+              <div class="switch-value-label">...</div>
+              <div class="switch-wrapper">
+                <div class="switch switch-on">
+                  <div class="switch-value"></div>
+                </div>
+                <div class="switch-labels">
+                  <div><i id="delayreverb_effect_type"></i></div>
+                  <div>on</div>
+                  <div>off</div>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <!-- The content -->
-          <div
-            id="midi_output_devices_container"
-            class="dropdown_content"
-            style="
-              border: solid 1px var(--main-background-color-darker);
-              width: 100%;
-            "
-          >
-            <i>Please connect a MIDI device</i>
-          </div>
-        </div>
-      </div>
-      <div class="menu_section">
-        <div
-          id="menu-retrieve-patch"
-          class="menu_button menu_button_disabled"
-          style="align-self: center; display: flex"
-        >
-          <div style="padding: 10px">
             <div
-              id="menu-retrieve-patch-status"
-              class="connection_status connection_status__notselected"
-            ></div>
-          </div>
-          <div
-            id="menu-retrieve-patch-old"
-            style="
-              border-left: 1px solid var(--main-background-color-darker);
-              padding: 8px;
-            "
-          >
-            retrieve patch
-          </div>
-        </div>
-        <div
-          class="menu_button menu_button_disabled"
-          style="align-self: center"
-        >
-          <div style="padding: 8px"><a id="save_patch">save patch</a></div>
-        </div>
-        <div class="menu_button" style="align-self: center">
-          <div style="padding: 8px">
-            <input
-              id="load_patch_input"
-              type="file"
-              accept="text/*"
-              style="display: none"
-            /><a id="load_patch">load patch</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- The Panel -->
-    <div class="panel panel-unavailable">
-      <div class="panel-section" style="align-items: center; opacity: 0.3">
-        <!-- Timbre Section -->
-        <div class="panel-row"></div>
-        <div class="panel-title">timbre</div>
-        <div class="panel-row">
-          <div
-            id="timbre-mainsub-balance"
-            class="knob-container panel-cell-fill"
-          >
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">main/sub balance</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="timbretype" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
+              id="effect_reverbdelay_time"
+              class="knob-container panel-cell-fill"
+            >
+              <div class="knob-value-label">...</div>
+              <div class="knob">
+                <div class="knob-value"></div>
               </div>
-              <div class="switch-labels">
-                <div>split</div>
-                <div>xfade</div>
-                <div>layer</div>
+              <div class="knob-label">time</div>
+            </div>
+            <div
+              id="effect_reverbdelay_depth"
+              class="knob-container panel-cell-fill"
+            >
+              <div class="knob-value-label"></div>
+              <div class="knob">
+                <div class="knob-value"></div>
               </div>
+              <div class="knob-label">depth</div>
             </div>
-            <div class="knob-label">type</div>
           </div>
-          <div id="timbre-switch" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
+          <div class="panel-row">
+            <div id="effect-screen" class="screen-container panel-cell-fill">
+              <div class="screen">
+                <div>Init Program</div>
               </div>
-              <div class="switch-labels">
-                <div class="switch-state switch-state-selected"></div>
-                <div class="switch-state"></div>
-                <div class="switch-state"></div>
-              </div>
-              <div class="switch-labels">
-                <div>main</div>
-                <div>+</div>
-                <div>sub</div>
-              </div>
-            </div>
-            <div class="knob-label">panel</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-section">
-        <!-- Voice Section -->
-        <div class="panel-title" style="display: none">voice</div>
-        <div class="panel-row">
-          <div id="portamento" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">portamento</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="voice-spread" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">voice spread</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="voice-mode-depth" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">voice mode <br />depth</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-section" style="flex-grow: 3">
-        <!-- Oscillators Section -->
-        <div class="panel-title">vco 1</div>
-        <div class="panel-row">
-          <div id="vco1-wave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>saw</div>
-                <div>tri</div>
-                <div>squ</div>
-              </div>
-            </div>
-            <div class="knob-label">wave</div>
-          </div>
-          <div id="vco1-octave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div class="switch-state"></div>
-                <div class="switch-state switch-state-selected"></div>
-                <div class="switch-state"></div>
-                <div class="switch-state"></div>
-              </div>
-            </div>
-            <div class="knob-label">octave</div>
-          </div>
-          <div id="vco1-pitch" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">pitch</div>
-          </div>
-          <div id="vco1-shape" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">shape</div>
-          </div>
-          <div id="vco1-pitch-eg" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>all</div>
-                <div>vco1+2</div>
-                <div>vco2</div>
-              </div>
-            </div>
-            <div class="knob-label">pitch eg</div>
-          </div>
-          <div id="vco1-int" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">int</div>
-          </div>
-        </div>
-        <div class="panel-title">vco 2</div>
-        <div class="panel-row">
-          <div id="vco2-wave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>saw</div>
-                <div>tri</div>
-                <div>squ</div>
-              </div>
-            </div>
-            <div class="knob-label">wave</div>
-          </div>
-          <div id="vco2-octave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div class="switch-state"></div>
-                <div class="switch-state switch-state-selected"></div>
-                <div class="switch-state"></div>
-                <div class="switch-state"></div>
-              </div>
-            </div>
-            <div class="knob-label">octave</div>
-          </div>
-          <div id="vco2-pitch" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">pitch</div>
-          </div>
-          <div id="vco2-shape" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">shape</div>
-          </div>
-          <div id="sync-ring" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>sync</div>
-                <div></div>
-                <div>ring</div>
-              </div>
-            </div>
-            <div class="knob-label"></div>
-          </div>
-          <div id="cross-mod-depth" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">cross mod <br />depth</div>
-          </div>
-        </div>
-        <div class="panel-title">multi engine</div>
-        <div class="panel-row">
-          <div id="multi-wave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>usr</div>
-                <div>vpm</div>
-                <div>noi</div>
-              </div>
-            </div>
-            <div class="knob-label">wave</div>
-          </div>
-          <div id="multi-octave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div class="switch-state"></div>
-                <div class="switch-state switch-state-selected"></div>
-                <div class="switch-state"></div>
-                <div class="switch-state"></div>
-              </div>
-            </div>
-            <div class="knob-label">octave</div>
-          </div>
-          <div id="multi-screen" class="screen-container panel-cell-fill">
-            <div class="screen"></div>
-          </div>
-          <div id="multi-shape" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">shape</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-section">
-        <!-- Mixer Section -->
-        <div class="panel-title">mixer</div>
-        <div class="panel-row">
-          <div id="mixer-vco1-volume" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">vco1</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="mixer-vco2-volume" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">vco2</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="mixer-multi-volume" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">multi</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-section" style="flex-grow: 2">
-        <!-- F Section -->
-        <div class="panel-title">vcf</div>
-        <div id="vcf-cutoff" class="knob-container">
-          <div class="knob-value-label">...</div>
-          <div class="knob" style="width: 80px; height: 80px">
-            <div class="knob-value"></div>
-          </div>
-
-          <div class="knob-label">cutoff</div>
-        </div>
-        <div class="panel-row">
-          <div id="vcf-resonance" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-
-            <div class="knob-label">resonance</div>
-          </div>
-
-          <div id="vcf-egint" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-
-            <div class="knob-label">eg int</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="vcf-drive" class="switch-container panel-cell-fill">
-            <div class="switch">
-              <div class="switch-value"></div>
-            </div>
-
-            <div class="knob-label">drive</div>
-          </div>
-          <div id="vcf-lowcut" class="switch-container panel-cell-fill">
-            <div class="switch">
-              <div class="switch-value"></div>
-            </div>
-
-            <div class="knob-label">lowcut</div>
-          </div>
-          <div id="vcf-keytrack" class="switch-container panel-cell-fill">
-            <div class="switch">
-              <div class="switch-value" style="bottom: 0px"></div>
-            </div>
-
-            <div class="knob-label">keytrack</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-section" style="flex-grow: 3">
-        <!-- Enveloppe Section -->
-        <div class="panel-title">amp eg</div>
-        <div class="panel-row">
-          <div id="amp-attack" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">attack</div>
-          </div>
-          <div id="amp-decay" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">decay</div>
-          </div>
-          <div id="amp-sustain" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">sustain</div>
-          </div>
-          <div id="amp-release" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">release</div>
-          </div>
-        </div>
-        <div class="panel-title">eg</div>
-        <div class="panel-row">
-          <div id="filter-eg-attack" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">attack</div>
-          </div>
-          <div id="filter-eg-decay" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">decay</div>
-          </div>
-          <div id="filter-eg-sustain" class="knob-container panel-cell-fill">
-            <div class="knob-value-label"></div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">sustain</div>
-          </div>
-          <div id="filter-eg-release" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">release</div>
-          </div>
-        </div>
-        <div class="panel-title">lfo</div>
-        <div class="panel-row">
-          <div id="lfo-wave" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>saw</div>
-                <div>tri</div>
-                <div>squ</div>
-              </div>
-            </div>
-
-            <div class="knob-label">wave</div>
-          </div>
-          <div id="lfo-mode" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>fast</div>
-                <div>slow</div>
-                <div>bpm</div>
-              </div>
-            </div>
-
-            <div class="knob-label">mode</div>
-          </div>
-          <div id="lfo-rate" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">rate</div>
-          </div>
-          <div id="lfo-int" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">int</div>
-          </div>
-          <div id="lfo-target" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div>pitch</div>
-                <div>shape</div>
-                <div>cutoff</div>
-              </div>
-            </div>
-
-            <div class="knob-label">target</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel-section" style="flex-grow: 2">
-        <!-- Effects Section -->
-        <div class="panel-title">mod effect</div>
-        <div class="panel-row">
-          <div id="effect_mod" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div><i id="mod_effect_type"></i></div>
-                <div>on</div>
-                <div>off</div>
-              </div>
-            </div>
-          </div>
-          <div id="effect_speed" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">speed</div>
-          </div>
-          <div id="effect_depth" class="knob-container panel-cell-fill">
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">depth</div>
-          </div>
-        </div>
-        <div class="panel-title">delay/reverb</div>
-        <div class="panel-row">
-          <div id="effect_reverbdelay" class="switch-container panel-cell-fill">
-            <div class="switch-value-label">...</div>
-            <div class="switch-wrapper">
-              <div class="switch switch-on">
-                <div class="switch-value"></div>
-              </div>
-              <div class="switch-labels">
-                <div><i id="delayreverb_effect_type"></i></div>
-                <div>on</div>
-                <div>off</div>
-              </div>
-            </div>
-          </div>
-          <div
-            id="effect_reverbdelay_time"
-            class="knob-container panel-cell-fill"
-          >
-            <div class="knob-value-label">...</div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">time</div>
-          </div>
-          <div
-            id="effect_reverbdelay_depth"
-            class="knob-container panel-cell-fill"
-          >
-            <div class="knob-value-label"></div>
-            <div class="knob">
-              <div class="knob-value"></div>
-            </div>
-            <div class="knob-label">depth</div>
-          </div>
-        </div>
-        <div class="panel-row">
-          <div id="effect-screen" class="screen-container panel-cell-fill">
-            <div class="screen">
-              <div>Init Program</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- The footer -->
+      <footer>
+        <div>
+          <small>2023 - </small>
+          <a href="https://github.com/anthonyray/patchlogue"
+            ><img src="assets/github.svg"
+          /></a>
+        </div>
+      </footer>
+    </main>
     <script src="./bootstrap.js"></script>
     <script
       defer
