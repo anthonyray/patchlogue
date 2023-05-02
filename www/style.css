@@ -16,20 +16,55 @@
   --main-accent-color: #e26d5c;
   --main-green: rgb(0, 173, 118);
   --main-green-lighter: rgb(236, 247, 229);
+
+  --panel-line-width: 1px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: var(--main-background-color);
-  font-family: sans-serif;
+  font-family: monospace;
   color: var(--main-text-color);
+  padding: 0 0.5rem;
 }
 
-header {
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main .panel {
+  flex-grow: 1;
+}
+
+main header,
+main footer,
+main .menu {
+  flex-shrink: 0;
+}
+
+header,
+footer {
   display: flex;
   justify-content: center;
   font-family: monospace;
   border-bottom: var(--main-background-color-darker) solid 1px;
   padding: 0.8rem;
+}
+
+footer {
+  margin-top: 2rem;
+  border-top: var(--main-background-color-darker) solid 1px;
+}
+
+footer img {
+  height: 12px;
 }
 
 header div {
@@ -172,7 +207,7 @@ ul li {
   border-radius: 100%;
   margin: 0 auto;
   border-color: var(--main-background-color-darker);
-  border-width: 2px;
+  border-width: var(--panel-line-width);
   border-style: solid;
   transition: transform 1s;
 }
@@ -184,8 +219,9 @@ ul li {
   background-color: var(--main-background-color-darker);
   border-radius: 10%;
   border-color: var(--main-background-color-darker);
-  border-width: 1px;
+  border-width: var(--panel-line-width);
   border-style: solid;
+  border-right: none;
 }
 
 .knob-label {
@@ -227,7 +263,7 @@ ul li {
   height: 40px;
   border-radius: 10px;
   border-color: var(--main-background-color-darker);
-  border-width: 2px;
+  border-width: var(--panel-line-width);
   border-style: solid;
 }
 
