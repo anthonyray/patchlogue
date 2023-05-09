@@ -319,7 +319,10 @@ ul li {
 
 .screen-container {
   display: flex;
+  flex-direction: column;
+
   justify-content: center;
+  align-items: center;
 }
 
 .screen {
@@ -336,6 +339,7 @@ ul li {
   font-family: monospace;
 
   font-size: 0.7rem;
+  text-align: center;
 }
 
 .panel-push-button-container {

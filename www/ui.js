@@ -73,16 +73,7 @@ function updateLeds(dom_selector, data, ...led_activation_functions) {
 }
 
 function updateScreen(dom_selector, text) {
-  document.querySelector(dom_selector).innerHTML = text;
-  /*
-    <div class="panel-row">
-          <div id="panel-screen" class="screen-container panel-cell-fill">
-            <div class="screen"> 
-              <div>Init Program</div>
-            </div>
-          </div>                  
-        </div>$
-        */
+  document.querySelector(dom_selector).innerText = text;
 }
 
 export {
