@@ -206,7 +206,7 @@ function updateFXSection(program) {
   }
 
   // Update program name
-  updateScreen("#effect-screen > .screen", program.program_name);
+  updateScreen("#effect-screen .screen p", program.program_name);
 }
 
 function updateFilterSection(program) {
@@ -376,13 +376,13 @@ function updateOscillatorsSection(program) {
   // Update screen
   switch (program.timbre1.multi_type) {
     case "Vpm":
-      updateScreen("#multi-screen > .screen", program.timbre1.select_vpm);
+      updateScreen("#multi-screen .screen p", program.timbre1.select_vpm);
       break;
     case "Noise":
-      updateScreen("#multi-screen > .screen", program.timbre1.select_noise);
+      updateScreen("#multi-screen .screen p", program.timbre1.select_noise);
       break;
     case "User":
-      updateScreen("#multi-screen > .screen", program.timbre1.select_user);
+      updateScreen("#multi-screen .screen p", program.timbre1.select_user);
       break;
   }
 }
